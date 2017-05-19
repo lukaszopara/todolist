@@ -2,21 +2,40 @@
     <div class="row">
         <div class="col-xs-12">
             <header class="page-header">
-                <h1>Lista TODO</h1>
+                <h1>{{ appTitle }}</h1>
             </header>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <a data-ng-href="#">Powrót do zadań</a>
+            <a data-ng-href="#">{{ listTaskLink }}</a>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 well">
-            Lista wykonanych zadań
+        <div class="col-xs-6">
+            <div data-ng-repeat="item in taskList">
+                <div class="row well" ng-if="item.done">
+                    <div class="col-xs-6">
+                        <button class="btn btn-default btn-block truncate text-left" type="submit">
+                            {{ item.name }}
+                        </button>
+                    </div>
+                    <div class="col-xs-3">
+                        <button class="btn btn-default btn-block truncate">
+                            {{ deleteTask }}
+                        </button>
+                    </div>
+                    <div class="col-xs-3">
+                        <button class="btn btn-default btn-block truncate">
+                            {{ setAsToDo }}
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-6 well">
-            Szczegóły wykonanych zadań
+            <h2>Nazwa</h2>
+            <span>Opis</span>
         </div>
     </div>
 </div>

@@ -1,0 +1,17 @@
+textarea {
+    resize: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button.text-left {
+    text-align: left;
+}

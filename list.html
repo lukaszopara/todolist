@@ -2,21 +2,52 @@
     <div class="row">
         <div class="col-xs-12">
             <header class="page-header">
-                <h1>Lista TODO</h1>
+                <h1>{{ appTitle }}</h1>
             </header>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <a data-ng-href="#done">Sprawdź wykonane zadania</a>
+        <div class="col-xs-6">
+            <a data-ng-href="#done">{{ doneTaskLink }}</a>
+        </div>
+        <div class="col-xs-6">
+            <label for="name" data-ng-click="cleanTask()">{{ addNewTask }}</label>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 well">
-            Lista zadań do wykonania
+        <div class="col-xs-6">
+            <div data-ng-repeat="item in taskList track by $index">
+                <div class="row well" ng-if="!item.done">
+                    <div class="col-xs-6">
+                        <button class="btn btn-default btn-block truncate text-left" type="submit">
+                            {{ item.name }}
+                        </button>
+                    </div>
+                    <div class="col-xs-3">
+                        <button class="btn btn-default btn-block truncate">
+                            {{ deleteTask }}
+                        </button>
+                    </div>
+                    <div class="col-xs-3">
+                        <button class="btn btn-default btn-block truncate">
+                            {{ setAsDone }}
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-6 well">
-            Szczegóły zadań do wykonania
+            <form data-ng-submit="addTask()">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="{{ taskNamePlaceholder }}" data-ng-model="taskName" id="name">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">{{ saveTaskButton }}</button>
+                    </span>
+                </div>
+                <div class="input-group-fluid">
+                    <textarea class="form-control" rows="5" placeholder="{{ taskDescriptionPlaceholder }}" data-ng-model="taskDesc"></textarea>
+                </div>
+            </form>
         </div>
     </div>
 </div>

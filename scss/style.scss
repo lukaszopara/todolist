@@ -2,16 +2,12 @@ textarea {
     resize: none;
 }
 
-label {
-    cursor: pointer;
+.task-1 {
+    color: darkgrey;
 }
 
-.truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-button.text-left {
-    text-align: left;
+.well.list {
+    padding: 0;
+    border: 0;    
+    background: none;
 }

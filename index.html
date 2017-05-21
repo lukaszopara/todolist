@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="UTF-8">
-        <title>Lista TODO</title>
-        <script src="js/angular.min.js"></script>
-        <script src="js/angular-route.min.js"></script>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body data-ng-app="ToDoList">
-        <div data-ng-view>
-            Trwa ładowanie zawartości strony...
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista TODO</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-ng-app="ToDoList">
+    <div class="container" data-ng-controller="toDoListController">
+        <div class="row">
+            <div class="col-xs-12">
+                <header class="page-header">
+                    <h1>{{ appTitle }}</h1>
+                </header>
+            </div>
         </div>
-        <script src="module.js"></script>
-        <script src="routes.js"></script>
-        <script src="controller.js"></script>
-    </body>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div data-ng-repeat="item in taskList track by $index">
+                    <form data-ng-submit="saveLocalData()">
+                        <div class="well list input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" data-ng-model="item.done" data-ng-click="saveLocalData()" ng-true-value="1" ng-false-value="0">
+                            </span>
+                            <input type="text" class="form-control truncate task-{{item.done}}" placeholder="{{ taskNamePlaceholder }}" ng-model="item.name" value="{{ item.name }}">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">{{ saveTaskButton }}</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 well">
+                <form data-ng-submit="addTask()">
+                    <label for="name" data-ng-click="cleanTask()">{{ addNewTask }}</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="{{ taskNamePlaceholder }}" data-ng-model="taskName" id="name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">{{ saveTaskButton }}</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="" data-ng-click="delete()">{{ deleteDoneTask }}</a>
+            </div>
+        </div>
+    </div>
+    <script src="module.js"></script>
+    <script src="controller.js"></script>
+</body>
+
 </html>

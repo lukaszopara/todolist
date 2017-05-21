@@ -1,1 +1,1 @@
-var app = angular.module('ToDoList', ['ngRoute']);
+var app = angular.module('ToDoList', []);

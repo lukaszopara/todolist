@@ -22,15 +22,12 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <div data-ng-repeat="item in taskList track by $index">
-                    <form data-ng-submit="saveLocalData()">
+                    <form>
                         <div class="well list input-group">
                             <span class="input-group-addon">
-                                <input type="checkbox" data-ng-model="item.done" data-ng-click="saveLocalData()" ng-true-value="1" ng-false-value="0">
+                                <input type="checkbox" data-ng-model="item.done" data-ng-click="saveLocalData()" data-ng-true-value="1" data-ng-false-value="0">
                             </span>
-                            <input type="text" class="form-control truncate task-{{item.done}}" placeholder="{{ taskNamePlaceholder }}" ng-model="item.name" value="{{ item.name }}">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">{{ saveTaskButton }}</button>
-                            </span>
+                            <input type="text" class="form-control task-{{item.done}}" placeholder="{{ taskNamePlaceholder }}" data-ng-model="item.name" value="{{ item.name }}" data-ng-change="saveLocalData()">
                         </div>
                     </form>
                 </div>

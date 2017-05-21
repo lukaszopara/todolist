@@ -3,7 +3,7 @@ app.controller('toDoListController', function ($scope) {
     $scope.appTitle = "Lista TODO";
     $scope.deleteDoneTask = "Usuń wykonane zadania";
     $scope.addNewTask = "Dodaj nowe zadanie";
-    $scope.saveTaskButton = "Zapisz";
+    $scope.saveTaskButton = "Dodaj zadanie";
     $scope.taskNamePlaceholder = "Nazwa zadania";
     $scope.taskDescriptionPlaceholder = "Opis zadania";
     
